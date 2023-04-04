@@ -32,6 +32,7 @@ public class SecurityConfig {
 			authz.requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll();
 			authz.requestMatchers(EndpointRequest.to(MyCustomActuatorEndPoint.class)).authenticated();
 			authz.requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated();
+			authz.anyRequest().permitAll();
 		});
 
 		http.httpBasic();
