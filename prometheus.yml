@@ -1,0 +1,21 @@
+global:
+   scrape_interval: 5s
+   evaluation_interval: 5s
+
+rule_files:
+#   - "file1.yml"
+
+scrape_configs:
+   - job_name: 'prometheus'
+     static_configs:
+      - targets: ['127.0.0.1:9090']
+
+   - job_name: 'spring-actuator-demo-app'
+     metrics_path: '/actuator/prometheus'
+     scrape_interval: 5s
+     static_configs:
+        - targets: ['host.docker.internal:8080']
+     basic_auth:
+        username: "test"
+        password: "test"
+      
